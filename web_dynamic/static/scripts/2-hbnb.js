@@ -13,12 +13,10 @@ $(document).ready(function () {
 });
 
 $.get('http://55.55.55.5:5001/api/v1/status/', function (data, response) {
-    if (response === 'success') {      
-        console.log('succes');
+    if (response === 'success') {
         $('DIV#api_status').css("background-color", "#ff545f");
         //$('#api_status').addClass('available');
       } else {
-        console.log('fail');
         $('DIV#api_status').removeClass('available');
       }
     
