@@ -11,13 +11,16 @@ $(document).ready(function () {
     $('.amenities h4').append($(this).attr('data-name') + ' ');
   });
 });
-$.get('http://0.0.0.0:5001/api/v1/status/', function (data, textStatus) {
-    if (textStatus === 'success') {
-      if (data.status === 'OK') {
-        $('#api_status').addClass('available');
+
+$.get('http://55.55.55.5:5001/api/v1/status/', function (data, response) {
+    if (response === 'success') {      
+        console.log('succes');
+        $('DIV#api_status').css("background-color", "#ff545f");
+        //$('#api_status').addClass('available');
       } else {
-        $('#api_status').removeClass('available');
+        console.log('fail');
+        $('DIV#api_status').removeClass('available');
       }
-    }
-  });
+    
+  
 });
