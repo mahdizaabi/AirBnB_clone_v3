@@ -12,7 +12,7 @@ $(document).ready(function () {
   });
 });
 
-$.get('http://55.55.55.5:5001/api/v1/status/', function (data, response) {
+$.get('http://0.0.0.0:5001/api/v1/status/', function (data, response) {
   if (response === 'success') {
     $('DIV#api_status').css('background-color', '#ff545f');
     //to avoid CORS,i decided to change the color only if the reponse is 200,
