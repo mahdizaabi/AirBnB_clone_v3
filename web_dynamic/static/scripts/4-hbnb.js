@@ -51,7 +51,7 @@ $('button').click(function () {
     contentType: 'application/json',
     success: function (data) {
       for (const place of data) {
-        $('SECTION.places').html(
+        $('SECTION.places').append(
             `<ARTICLE>
             <div class= "title_box">
             <h2> ${place.name} </h2>
