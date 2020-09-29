@@ -13,7 +13,7 @@ $(document).ready(function () {
     $('.amenities h4').append($(this).attr('data-name') + ' ');
   });
   $.ajax({
-    url: 'http://55.55.55.5:5001/api/v1/places_search/',
+    url: 'http://0.0.0.0:5001/api/v1/places_search/',
     type: 'post',
     data: ('{}'),
     contentType: 'application/json',
@@ -45,7 +45,7 @@ $(document).ready(function () {
 $('button').click(function () {
   console.log(listAmen);
   $.ajax({
-    url: 'http://55.55.55.5:5001/api/v1/places_search/',
+    url: 'http://0.0.0.0:5001/api/v1/places_search/',
     type: 'post',
     data: JSON.stringify({ amenities: listAmen }),
     contentType: 'application/json',
