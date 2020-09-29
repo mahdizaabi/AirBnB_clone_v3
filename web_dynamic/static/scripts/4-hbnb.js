@@ -1,24 +1,25 @@
-const listAmen = []; $(document).ready(function () {
+const listAmen = [];
+$(document).ready(function () {
   $('input[type="checkbox"]').click(function () {
     if (this.checked) {
-      console.log($(this).attr('data-id'));
+      // console.log($(this).attr('data-id'));
       listAmen.push($(this).attr('data-id'));
+      console.log(listAmen);
     } else {
       listAmen.splice(listAmen.indexOf($(this).attr('data-id'), 1));
+      console.log(listAmen);
     }
     $('.amenities h4').css('display', 'inline-block');
     $('.amenities h4').append($(this).attr('data-name') + ' ');
   });
-});
-
-$.ajax({
-  url: 'http://0.0.0.0:5001/api/v1/places_search/',
-  type: 'post',
-  data: ('{}'),
-  contentType: 'application/json',
-  success: function (data) {
-    for (const place of data) {
-      $('SECTION.places').append(
+  $.ajax({
+    url: 'http://55.55.55.5:5001/api/v1/places_search/',
+    type: 'post',
+    data: ('{}'),
+    contentType: 'application/json',
+    success: function (data) {
+      for (const place of data) {
+        $('SECTION.places').append(
           `<ARTICLE>
           <div class= "title_box">
           <h2> ${place.name} </h2>
@@ -35,28 +36,41 @@ $.ajax({
           </div>
           <div class="user">
           <div class="description"> ${place.description} </div>
-          </ARTICLE>`
-      );
+          </ARTICLE>`);
+      }
     }
-  }
+  });
 });
-
-
-
-console.log(listAmen);
-$(document).ready(() => {
 
 $('button').click(function () {
-console.log("okokok"); });
-$.ajax({
-url: 'http://0.0.0.0:5001/api/v1/places_search/',
-type: 'post',
-data: JSON.stringify({"states": listAmen}),
-contentType: 'application/json',
-success: function (data) {
-
-console.log('ok');}
-
-
-});
+  console.log(listAmen);
+  $.ajax({
+    url: 'http://55.55.55.5:5001/api/v1/places_search/',
+    type: 'post',
+    data: JSON.stringify({ amenities: listAmen }),
+    contentType: 'application/json',
+    success: function (data) {
+      for (const place of data) {
+        $('SECTION.places').html(
+            `<ARTICLE>
+            <div class= "title_box">
+            <h2> ${place.name} </h2>
+            <div class="price_by_night">$ ${place.price_by_night}
+            </div>
+            </div>
+            <div class="information">
+            <div class="max_guest"> ${place.max_guest} Guest${(place.max_guest !== 1 ? 's' : '')}
+            </div>
+            <div class="number_rooms"> ${place.number_rooms} Bedroom${(place.number_rooms !== 1 ? 's' : '')}
+            </div>
+            <div class="number_bathrooms"> ${place.number_bathrooms} Bathroom${(place.number_bathrooms !== 1 ? 's' : '')}
+            </div>
+            </div>
+            <div class="user">
+            <div class="description"> ${place.description} </div>
+            </ARTICLE>`
+        );
+      }
+    }
+  });
 });
