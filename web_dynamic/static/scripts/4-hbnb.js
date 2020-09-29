@@ -6,7 +6,6 @@ $(document).ready(function () {
       listAmen.push($(this).attr('data-id'));
     } else {
       listAmen.splice(listAmen.indexOf($(this).attr('data-id'), 1));
-      console.log(listAmen);
     }
     $('.amenities h4').css('display', 'inline-block');
     $('.amenities h4').append($(this).attr('data-name') + ' ');
