@@ -4,7 +4,6 @@ $(document).ready(function () {
     if (this.checked) {
       // console.log($(this).attr('data-id'));
       listAmen.push($(this).attr('data-id'));
-      console.log(listAmen);
     } else {
       listAmen.splice(listAmen.indexOf($(this).attr('data-id'), 1));
       console.log(listAmen);
@@ -43,7 +42,6 @@ $(document).ready(function () {
 });
 
 $('button').click(function () {
-  console.log(listAmen);
   $.ajax({
     url: 'http://0.0.0.0:5001/api/v1/places_search/',
     type: 'post',
